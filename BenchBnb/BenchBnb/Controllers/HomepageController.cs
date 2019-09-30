@@ -38,7 +38,7 @@ namespace BenchBnb.Controllers
             var repo = new BenchRepo(context);
             try
             {
-                var bench = new Bench("Test", formModel.NumSeats, 4.534f, 5.493f);
+                var bench = new Bench(formModel.Description, formModel.NumSeats, formModel.Latitude, formModel.Longitude);
                 repo.Insert(bench);
                 return RedirectToAction("Index");
             }

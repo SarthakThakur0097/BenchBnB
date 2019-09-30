@@ -16,6 +16,23 @@
             @Html.ValidationMessageFor(model => model.NumSeats, "", new { @class = "pure-form-message-inline" })
         </div>
 
+        <div class="pure-control-group">
+            @Html.LabelFor(model => model.Description)
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "pure-form-message-inline" })
+        </div>
+
+        <div class="pure-control-group">
+            @Html.LabelFor(model => model.Latitude)
+            @Html.EditorFor(model => model.Latitude)
+            @Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "pure-form-message-inline" })
+        </div>
+
+        <div class="pure-control-group">
+            @Html.LabelFor(model => model.Longitude)
+            @Html.EditorFor(model => model.Longitude)
+            @Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "pure-form-message-inline" })
+        </div>
         <div class="pure-controls">
             @Html.ActionLink("Cancel", "Index", new { }, new { @class = "pure-button" })
             <button type="submit" class="pure-button pure-button-primary">Submit</button>
