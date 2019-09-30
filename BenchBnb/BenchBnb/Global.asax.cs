@@ -7,6 +7,8 @@ using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
 using System.Web.Http;
+using BenchBnb.Models.Data;
+using System.Data.Entity;
 
 namespace BenchBnb
 {
@@ -17,7 +19,8 @@ namespace BenchBnb
             // Code that runs on application startup
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);            
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<Context>());
         }
     }
 }
