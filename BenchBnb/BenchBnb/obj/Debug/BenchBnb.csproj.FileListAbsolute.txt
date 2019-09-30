@@ -39,3 +39,14 @@ C:\Users\Admin\Desktop\BenchBnB\BenchBnb\BenchBnb\bin\System.Web.Http.WebHost.xm
 C:\Users\Admin\Desktop\BenchBnB\BenchBnb\BenchBnb\obj\Debug\BenchBnb.csprojResolveAssemblyReference.cache
 C:\Users\Admin\Desktop\BenchBnB\BenchBnb\BenchBnb\obj\Debug\BenchBnb.dll
 C:\Users\Admin\Desktop\BenchBnB\BenchBnb\BenchBnb\obj\Debug\BenchBnb.pdb
+C:\Users\Admin\Desktop\BenchBnB\BenchBnb\BenchBnb\bin\EntityFramework.dll
+C:\Users\Admin\Desktop\BenchBnB\BenchBnb\BenchBnb\bin\EntityFramework.SqlServer.dll
+C:\Users\Admin\Desktop\BenchBnB\BenchBnb\BenchBnb\bin\EntityFramework.xml
+C:\Users\Admin\Desktop\BenchBnB\BenchBnb\BenchBnb\bin\EntityFramework.SqlServer.xml
+C:\Users\Admin\Desktop\BenchBnB\BenchBnb\BenchBnb\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Admin\Desktop\BenchBnB\BenchBnb\BenchBnb\bin\Unity.Abstractions.dll
+C:\Users\Admin\Desktop\BenchBnB\BenchBnb\BenchBnb\bin\Unity.Container.dll
+C:\Users\Admin\Desktop\BenchBnB\BenchBnb\BenchBnb\bin\Unity.WebApi.dll
+C:\Users\Admin\Desktop\BenchBnB\BenchBnb\BenchBnb\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Admin\Desktop\BenchBnB\BenchBnb\BenchBnb\bin\Unity.Abstractions.pdb
+C:\Users\Admin\Desktop\BenchBnB\BenchBnb\BenchBnb\bin\Unity.Container.pdb
