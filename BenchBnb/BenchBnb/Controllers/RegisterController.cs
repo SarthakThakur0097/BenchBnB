@@ -45,7 +45,7 @@ namespace BenchBnb.Controllers
                 {
                     var user = new User(formModel.Email, formModel.Password);
                     repo.Insert(user);
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Login", "LogIn");
                 }
                 catch (DbUpdateException ex)
                 {

@@ -12,12 +12,12 @@ using System.Data.Entity.Infrastructure;
 
 namespace BenchBnb.Controllers
 {
-    public class HomepageController : Controller
+    public class BenchController : Controller
     {
         // GET: Homepage
         private Context context; 
 
-        public HomepageController()
+        public BenchController()
         {
             context = new Context();
         }
@@ -50,6 +50,13 @@ namespace BenchBnb.Controllers
             return View("Create", formModel);
         }
 
+        [HttpGet]
+        public ActionResult Index()
+        {
+            var repo = new BenchRepo(context);
+            IList<Bench> clients = repo.GetAllBenches();
+            return View("Index", clients);
+        }
 
     }
 }

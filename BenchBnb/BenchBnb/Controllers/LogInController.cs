@@ -43,7 +43,7 @@ namespace BenchBnb.Controllers
                 User user = repo.GetByPassword(formModel.Password);
                 if(user!=null)
                 {
-                    return RedirectToAction("Create", "Homepage");
+                    return RedirectToAction("Create", "Bench");
                 }
             }
             catch (DbUpdateException ex)

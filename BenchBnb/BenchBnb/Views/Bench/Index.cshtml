@@ -1,0 +1,36 @@
+﻿@model List<BenchBnb.Models.Bench>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Add A Bench", "Create", new { }, new { @class = "pure-button pure-button-primary" })
+</p>
+
+<table class="pure-table pure-table-bordered">
+    <thead>
+        <tr>
+            <th>Description</th>
+            <th>Number Of Seats</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var bench in Model)
+            {
+            <tr>
+                <td>@bench.Description</td>
+                <td>@bench.NumSeats</td>
+                <td>@bench.Latitude</td>
+                <td>@bench.Longitude</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { Id = bench.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

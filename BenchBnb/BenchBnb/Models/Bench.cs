@@ -19,6 +19,10 @@ namespace BenchBnb.Models
         [Required, Column("Longitude")]
         public float Longitude { get; set; } 
 
+        public Bench()
+        {
+
+        }
         public Bench (string description, int numSeats, float latitude, float longitude)
         {
             Description = description;
