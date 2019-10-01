@@ -1,0 +1,31 @@
+﻿@model BenchBnb.FormModels.CreateRegister
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Register</h2>
+
+
+@Html.ValidationSummary()
+
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email)
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.Password)
+        @Html.TextBoxFor(m => m.Password)
+    </div>
+    <div>
+        <button type="submit">Register</button>
+    </div>
+
+    <div class="pure-controls">
+        @Html.ActionLink("Cancel", "Index", new { }, new { @class = "pure-button" })
+        <button type="submit" class="pure-button pure-button-primary">Submit</button>
+    </div>
+}
