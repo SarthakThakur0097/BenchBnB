@@ -26,6 +26,11 @@ namespace BenchBnb.Models.Repositories
             return _context.Users.SingleOrDefault(c => c.Id == id);
         }
 
+        public User GetByPassword(string password)
+        {
+            return _context.Users.SingleOrDefault(c => c.Password == password);
+        }
+
         public void Insert(User user)
         {
             _context.Users.Add(user);

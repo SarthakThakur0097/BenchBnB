@@ -15,6 +15,10 @@ namespace BenchBnb.Models
         [Required, Column("Password")]
         public string Password { get; set; }
 
+        public User()
+        {
+
+        }
         public User(string userName, string passWord)
         {
             UserName = userName;
