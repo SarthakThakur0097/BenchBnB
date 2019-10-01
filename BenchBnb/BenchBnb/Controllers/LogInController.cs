@@ -8,6 +8,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace BenchBnb.Controllers
 {
@@ -40,10 +41,14 @@ namespace BenchBnb.Controllers
             var repo = new UserRepo(context);
             try
             {
-                User user = repo.GetByPassword(formModel.Password);
-                if(user!=null)
+                if (ModelState.IsValid)
                 {
-                    return RedirectToAction("Create", "Bench");
+                    User user = repo.GetByPassword(formModel.Password);
+                    if (user != null)
+                    {
+                        return RedirectToAction("Create", "Bench");
+                    }
+                    FormsAuthentication.SetAuthCookie(formModel.Email, false);
                 }
             }
             catch (DbUpdateException ex)

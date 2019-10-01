@@ -19,6 +19,8 @@ namespace BenchBnb.Models
         [Required, Column("Longitude")]
         public float Longitude { get; set; } 
 
+
+
         public Bench()
         {
 

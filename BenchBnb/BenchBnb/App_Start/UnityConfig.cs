@@ -16,6 +16,7 @@ namespace BenchBnb
             // e.g. container.RegisterType<ITestService, TestService>();
             
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
+            
         }
     }
 }
