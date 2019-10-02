@@ -46,7 +46,7 @@ namespace BenchBnb.Controllers
                     User user = repo.GetByPassword(formModel.Password);
                     if (user != null)
                     {
-                        return RedirectToAction("Create", "Bench");
+                        return RedirectToAction("Index", "Homepage");
                     }
                     FormsAuthentication.SetAuthCookie(formModel.Email, false);
                 }

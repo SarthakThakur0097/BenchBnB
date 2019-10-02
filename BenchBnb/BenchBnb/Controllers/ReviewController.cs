@@ -20,9 +20,10 @@ namespace BenchBnb.Controllers
         {
             context = new Context();
         }
-        public ActionResult Index(int id)
+        public ActionResult Index()
         {
             var repo = new ReviewsRepo(context);
+            
 
 
             return View();
@@ -38,13 +39,15 @@ namespace BenchBnb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CreateReview formModel)
+        public ActionResult Create(CreateReview formModel, int Id)
         {
-            var repo = new ReviewsRepo(context);
+            var revRepo = new ReviewsRepo(context);
+            var benRepo = new BenchRepo(context);
             try
             {
-                var review = new Review(formModel.Rating, formModel.Comment);
-                repo.Insert(review);
+                Bench bench = benRepo.GetById(Id);
+                var review = new Review(formModel.Rating, formModel.Comment, bench);
+                revRepo.Insert(review);
                 return RedirectToAction("Index");
             }
             catch (DbUpdateException ex)

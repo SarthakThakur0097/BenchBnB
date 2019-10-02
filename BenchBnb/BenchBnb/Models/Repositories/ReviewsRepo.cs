@@ -21,9 +21,9 @@ namespace BenchBnb.Models.Repositories
 
         }
 
-        public Review GetById(int id)
+        public List<Review> GetByBenchId(int id)
         {
-            return _context.Reviews.SingleOrDefault(c => c.Id == id);
+            return _context.Reviews.Where(r => r.BenchId == id).OrderBy(r => r.BenchId).ToList();
         }
 
         public void Insert(Review review)

@@ -14,11 +14,17 @@ namespace BenchBnb.Models
         public float Rating { get; set; }
         [Required, Column("Comment")]
         public string Comment { get; set; }
-
-        public Review(float rating, string comment)
+        //public int UserId { get; set; }
+        //public User User { get; set; }
+        public int BenchId { get; set; }
+        public Bench Bench { get; set; }
+        
+        
+        public Review(float rating, string comment, Bench bench)
         {
             Rating = rating;
             Comment = comment;
+            Bench = bench;
         }
         
     }

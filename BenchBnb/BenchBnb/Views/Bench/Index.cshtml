@@ -28,7 +28,7 @@
                 <td>@bench.Latitude</td>
                 <td>@bench.Longitude</td>
                 <td>
-                    @Html.ActionLink("Reviews","Index", "Review", new { Id = bench.Id }, null)
+                    @Html.ActionLink("Leave Review","Create", "Review", new { Id = bench.Id }, null)
                 </td>
             </tr>
         }

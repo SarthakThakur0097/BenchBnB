@@ -138,6 +138,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\map.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Bench\Create.cshtml" />
@@ -147,6 +148,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BenchController.cs" />
+    <Compile Include="Controllers\HomepageController.cs" />
     <Compile Include="Controllers\LogInController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\ReviewController.cs" />
@@ -183,6 +185,8 @@
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\LogIn\Login.cshtml" />
     <Content Include="Views\LogIn\Index.cshtml" />
+    <Content Include="Views\Homepage\Index.cshtml" />
+    <Content Include="Views\Review\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
