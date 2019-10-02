@@ -8,7 +8,6 @@
 <p>
     @Html.ActionLink("Add A Bench", "Create", new { }, new { @class = "pure-button pure-button-primary" })
 </p>
-
 <table class="pure-table pure-table-bordered">
     <thead>
         <tr>
@@ -18,7 +17,6 @@
             <th>Longitude</th>
         </tr>
     </thead>
-
     <tbody>
         @foreach (var bench in Model)
             {
@@ -31,6 +29,6 @@
                     @Html.ActionLink("Leave Review","Create", "Review", new { Id = bench.Id }, null)
                 </td>
             </tr>
-        }
+            }
     </tbody>
 </table>

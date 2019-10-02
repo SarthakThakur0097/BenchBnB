@@ -7,7 +7,7 @@ var map = new ol.Map({
     layers: [baseMapLayer],
     view: new ol.View({
         center: ol.proj.fromLonLat([-74.0061, 40.712]),
-        zoom: 7 //Initial Zoom Level
+        zoom: 15 //Initial Zoom Level
     })
 });
 var mousePosition = new ol.control.MousePosition({
@@ -23,7 +23,7 @@ console.log("Pos is: " + mousePosition.coordinateFormat);
 //Adding a marker on the map
 var marker = new ol.Feature({
     geometry: new ol.geom.Point(
-      ol.proj.fromLonLat([-74.006, 40.7127])
+      ol.proj.fromLonLat([4-.7644, 73.9235])
     ),  // Cordinates of New York's Town Hall
 });
 var vectorSource = new ol.source.Vector({
@@ -58,6 +58,7 @@ iconFeatures.push(iconFeature1);
 var vectorSource = new ol.source.Vector({
     features: iconFeatures //add an array of features
 });
+
 
 var iconStyle = new ol.style.Style({
     image: new ol.style.Icon(/** @type {olx.style.IconOptions} */({

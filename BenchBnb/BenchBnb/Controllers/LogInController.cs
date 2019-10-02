@@ -41,14 +41,15 @@ namespace BenchBnb.Controllers
             var repo = new UserRepo(context);
             try
             {
-                if (ModelState.IsValid)
+                if (ModelState.IsValidField("Email") && ModelState.IsValidField("Password"))
                 {
                     User user = repo.GetByPassword(formModel.Password);
                     if (user != null)
                     {
                         return RedirectToAction("Index", "Homepage");
                     }
-                    FormsAuthentication.SetAuthCookie(formModel.Email, false);
+                    if(ModelState.IsValid)
+                        FormsAuthentication.SetAuthCookie(formModel.Email, false);
                 }
             }
             catch (DbUpdateException ex)
@@ -57,6 +58,14 @@ namespace BenchBnb.Controllers
             }
 
             return View(formModel);
+        }
+
+        [HttpPost]
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+
+            return RedirectToAction("Login");
         }
     }
 }

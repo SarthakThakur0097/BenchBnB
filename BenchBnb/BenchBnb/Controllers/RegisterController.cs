@@ -20,14 +20,6 @@ namespace BenchBnb.Controllers
             context = new Context();
         }
 
-        // GET: Register
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-       
-  
         [AllowAnonymous]
         public ActionResult Register()
         {
@@ -39,7 +31,8 @@ namespace BenchBnb.Controllers
         [AllowAnonymous]
         public ActionResult Register(CreateRegister formModel)
         {
-            
+            if (ModelState.IsValid)
+            {
                 var repo = new UserRepo(context);
                 try
                 {
@@ -51,11 +44,10 @@ namespace BenchBnb.Controllers
                 {
                     //HandleDbUpdateException(ex);
                 }
+            }
 
                 //FormsAuthentication.SetAuthCookie(viewModel.Email, false);
-                return RedirectToAction("Index", "Home");
-            
-            return View();
+                return RedirectToAction("Register", "Register");
         }
 
     }
