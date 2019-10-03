@@ -24,10 +24,14 @@ namespace BenchBnb.Controllers
         }
 
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult Create(float? lat, float? lon)
         {
             var formModel = new CreateBench();
-      
+            if(lat!=null)
+            {
+                formModel.Latitude = lat.Value;
+                formModel.Longitude = lon.Value;
+            }
             return View("Create", formModel);
         }
 
@@ -35,6 +39,7 @@ namespace BenchBnb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CreateBench formModel)
         {
+
             var repo = new BenchRepo(context);
             try
             {

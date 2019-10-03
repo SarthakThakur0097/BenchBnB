@@ -19,7 +19,7 @@
         layers: [ baseMapLayer],
         view: new ol.View({
             center: ol.proj.fromLonLat([-74.0061,40.712]), 
-            zoom: 7 //Initial Zoom Level
+            zoom: 15 //Initial Zoom Level
         })
     });
     var mousePosition = new ol.control.MousePosition({
@@ -36,13 +36,18 @@
     {
         console.log(event.coordinate);
         event.coordinate = ol.proj.transform(event.coordinate, 'EPSG:3857', 'EPSG:4326')
-        latitude = event.coordinate[0];
-        longitude = event.coordinate[1];
+        const latitude = event.coordinate[0];
+        const longitude = event.coordinate[1];
         print();
-        window.location.href = "/Bench/Create/"+latitude;
+        
+     
+        window.location.href = "/Bench/Create?lat="+latitude+"&lon="+longitude;
        
     });
 
+
+    
+    
     async function print()
     {
         console.log(latitude);

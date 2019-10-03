@@ -30,7 +30,10 @@ namespace BenchBnb.Models.Repositories
         {
             return _context.Users.SingleOrDefault(c => c.Password == password);
         }
-
+        public User GetByEmail(string email)
+        {
+            return _context.Users.SingleOrDefault(c => c.UserName == email);
+        }
         public void Insert(User user)
         {
             _context.Users.Add(user);

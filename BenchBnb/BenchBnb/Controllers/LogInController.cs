@@ -20,6 +20,7 @@ namespace BenchBnb.Controllers
         {
             context = new Context();
         }
+
         // GET: LogIn
         public ActionResult Index()
         {
@@ -39,14 +40,21 @@ namespace BenchBnb.Controllers
             var repo = new UserRepo(context);
             try
             {
+
+
                 if (ModelState.IsValidField("Email") && ModelState.IsValidField("Password"))
                 {
-                    User user = repo.GetByPassword(formModel.Password);
-                    if (user != null)
+                    User user = repo.GetByEmail(formModel.Email);
+
+                    if (user != null || BCrypt.Net.BCrypt.Verify(formModel.Password, formModel.HashedPassword))
                     {
                         return RedirectToAction("Index", "Homepage");
                     }
-                    if(ModelState.IsValid)
+                    else
+                    {
+                        ModelState.AddModelError("", "Invalid UserName Or Password");
+                    }
+                    if (ModelState.IsValid)
                         FormsAuthentication.SetAuthCookie(formModel.Email, false);
                 }
             }
