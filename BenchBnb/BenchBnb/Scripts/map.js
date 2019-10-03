@@ -39,7 +39,7 @@
         latitude = event.coordinate[0];
         longitude = event.coordinate[1];
         print();
-
+        window.location.href = "/Bench/Create/"+latitude;
        
     });
 
