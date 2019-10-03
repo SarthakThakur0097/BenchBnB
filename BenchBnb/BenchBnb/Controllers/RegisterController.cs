@@ -45,7 +45,6 @@ namespace BenchBnb.Controllers
                     //HandleDbUpdateException(ex);
                 }
             }
-
                 //FormsAuthentication.SetAuthCookie(viewModel.Email, false);
                 return RedirectToAction("Register", "Register");
         }

@@ -10,9 +10,9 @@ namespace BenchBnb.Models
     public class Review
     {
         public int Id { get; set; }
-        [Required, Column("Rating")]
+        [Required]
         public float Rating { get; set; }
-        [Required, Column("Comment")]
+        [Required]
         public string Comment { get; set; }
         //public int UserId { get; set; }
         //public User User { get; set; }

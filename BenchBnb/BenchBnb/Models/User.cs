@@ -10,9 +10,9 @@ namespace BenchBnb.Models
     public class User
     {
         public int Id { get; set; }
-        [Required, Column("UserName")]
+        [Required]
         public string UserName { get; set; }
-        [Required, Column("Password")]
+        [Required]
         public string Password { get; set; }
 
         public User()

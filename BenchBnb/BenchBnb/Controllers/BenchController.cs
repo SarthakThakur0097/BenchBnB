@@ -9,6 +9,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity.Infrastructure;
+using System.Web.Script.Serialization;
 
 namespace BenchBnb.Controllers
 {
@@ -21,7 +22,6 @@ namespace BenchBnb.Controllers
         {
             context = new Context();
         }
-
 
         [HttpGet]
         public ActionResult Create()
@@ -46,7 +46,6 @@ namespace BenchBnb.Controllers
             {
                 //HandleDbUpdateException(ex);
             }
-
             return View("Create", formModel);
         }
 
@@ -54,8 +53,10 @@ namespace BenchBnb.Controllers
         public ActionResult Index()
         {
             var repo = new BenchRepo(context);
-            IList<Bench> clients = repo.GetAllBenches();
-            return View("Index", clients);
+            IList<Bench> benches = repo.GetAllBenches();
+            var json = new JavaScriptSerializer().Serialize(benches);
+
+            return View("Index", benches);
         }
 
     }

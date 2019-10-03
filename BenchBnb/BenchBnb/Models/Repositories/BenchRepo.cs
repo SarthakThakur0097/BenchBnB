@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using System.Data.Entity;
 using System.Web;
 
 namespace BenchBnb.Models.Repositories
@@ -18,7 +20,6 @@ namespace BenchBnb.Models.Repositories
         public IList<Bench> GetAllBenches()
         {
             return _context.Benches.ToList();
-
         }
 
         public Bench GetById(int id)
@@ -37,6 +38,17 @@ namespace BenchBnb.Models.Repositories
             _context.Benches.Attach(bench);
             _context.Entry(bench).State = System.Data.Entity.EntityState.Modified;
             _context.SaveChanges();
+        }
+        async public Task<List<Bench>> GetBenches()
+        {
+            using (var context = new Context())
+            {
+                List<Bench> benches = await context.Benches
+                  .OrderBy(b => b.NumSeats)
+                  .ToListAsync();
+
+                return benches;
+            }
         }
     }
 }

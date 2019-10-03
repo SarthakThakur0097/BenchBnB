@@ -10,13 +10,12 @@ namespace BenchBnb.Models
     public class Bench
     {
         public int Id { get; set; }
-        [Required, Column("Description")]
         public string Description { get; set; }
-        [Required, Column("NumSeats")]
+        [Required]
         public int NumSeats { get; set; }
-        [Required, Column("Latitude")]
+        [Required]
         public float Latitude { get; set; }
-        [Required, Column("Longitude")]
+        [Required]
         public float Longitude { get; set; }
         
         

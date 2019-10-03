@@ -29,7 +29,6 @@ namespace BenchBnb.Controllers
         [AllowAnonymous]
         public ActionResult Login()
         {
-
             var viewModel = new LogInFormModel();
             return View(viewModel);
         }
@@ -37,7 +36,6 @@ namespace BenchBnb.Controllers
         [AllowAnonymous]
         public ActionResult Login(LogInFormModel formModel)
         {
-
             var repo = new UserRepo(context);
             try
             {
