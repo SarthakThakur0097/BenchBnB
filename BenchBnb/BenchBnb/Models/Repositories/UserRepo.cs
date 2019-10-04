@@ -26,10 +26,6 @@ namespace BenchBnb.Models.Repositories
             return _context.Users.SingleOrDefault(c => c.Id == id);
         }
 
-        public User GetByPassword(string password)
-        {
-            return _context.Users.SingleOrDefault(c => c.HashedPassword == password);
-        }
         public User GetByEmail(string email)
         {
             return _context.Users.SingleOrDefault(c => c.Email == email);

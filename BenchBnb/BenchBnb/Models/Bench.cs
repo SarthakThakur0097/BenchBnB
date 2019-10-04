@@ -17,18 +17,19 @@ namespace BenchBnb.Models
         public float Latitude { get; set; }
         [Required]
         public float Longitude { get; set; }
-        
-        
+        public int UserId { get; set; }
+        public User User { get; set; }
         public Bench()
         {
 
         }
-        public Bench (string description, int numSeats, float latitude, float longitude)
+        public Bench (string description, int numSeats, float latitude, float longitude, User user)
         {
             Description = description;
             NumSeats = numSeats;
             Latitude = latitude;
             Longitude = longitude;
+            User = user;
         }
     }
 }

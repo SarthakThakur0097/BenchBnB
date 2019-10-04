@@ -11,6 +11,13 @@
     <p>Number Of Seats: @Model.NumSeats</p>
     <p>Latitude: @Model.Latitude</p>
     <p>Longitude: @Model.Longitude</p>
+    @if(Model.AverageRating==null)
+    {
+        <p>Rating: No Reviews</p>
+    }
+    else
+    { <p>Rating: @Model.AverageRating</p> }
+   
 </div>
 
 <div>

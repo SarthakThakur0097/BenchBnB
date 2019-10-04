@@ -13,7 +13,7 @@ using System.Web.Script.Serialization;
 
 namespace BenchBnb.Controllers
 {
-    [Authorize]
+    
     public class BenchController : Controller
     {
         // GET: Homepage
@@ -25,6 +25,7 @@ namespace BenchBnb.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Create(float? lat, float? lon)
         {
             var formModel = new CreateBench();
@@ -38,12 +39,15 @@ namespace BenchBnb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+       
         public ActionResult Create(CreateBench formModel)
         {
             var repo = new BenchRepo(context);
+            var userRepo = new UserRepo(context);
             try
             {
-                var bench = new Bench(formModel.Description, formModel.NumSeats, formModel.Latitude, formModel.Longitude);
+                User user = userRepo.GetByEmail(User.Identity.Name);
+                var bench = new Bench(formModel.Description, formModel.NumSeats, formModel.Latitude, formModel.Longitude, user);
                 repo.Insert(bench);
                 return RedirectToAction("Index");
             }
@@ -68,11 +72,27 @@ namespace BenchBnb.Controllers
         {
             var formModel = new CreateBench();
             var benchRepo = new BenchRepo(context);
+            var reviewRepo = new ReviewsRepo(context);
             Bench bench = benchRepo.GetById(benchId);
             formModel.Description = bench.Description;
             formModel.NumSeats = bench.NumSeats;
             formModel.Latitude = bench.Latitude;
             formModel.Longitude = bench.Longitude;
+            IList<Review> allReviews = reviewRepo.GetAllReviewsById(benchId);
+            if (allReviews.Count == 0)
+            {
+                formModel.AverageRating = null;
+            }
+            else
+            {
+                float sum = 0f;
+                foreach (Review rev in allReviews)
+                {
+                    sum += rev.Rating;
+                }
+                sum /= allReviews.Count;
+                formModel.AverageRating = sum;
+            }
 
             return View(formModel);
         }
