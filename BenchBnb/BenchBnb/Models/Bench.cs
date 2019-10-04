@@ -10,21 +10,24 @@ namespace BenchBnb.Models
     public class Bench
     {
         public int Id { get; set; }
-        [Required, Column("Description")]
-        public string Description { get; set;}
-        [Required, Column("NumSeats")]
+        [Required]
+        public string Description { get; set; }
         public int NumSeats { get; set; }
-        [Required, Column("Latitude")]
         public float Latitude { get; set; }
-        [Required, Column("Longitude")]
-        public float Longitude { get; set; } 
+        public float Longitude { get; set; }
+        public int UserId { get; set; }
+        public User User { get; set; }
+        public Bench()
+        {
 
-        public Bench (string description, int numSeats, float latitude, float longitude)
+        }
+        public Bench (string description, int numSeats, float latitude, float longitude, User user)
         {
             Description = description;
             NumSeats = numSeats;
             Latitude = latitude;
             Longitude = longitude;
+            User = user;
         }
     }
 }

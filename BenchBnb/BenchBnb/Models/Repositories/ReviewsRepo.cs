@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 
 namespace BenchBnb.Models.Repositories
 {
@@ -15,15 +16,17 @@ namespace BenchBnb.Models.Repositories
             _context = context;
         }
 
-        public IList<Review> GetAllReviews()
+        public IList<Review> GetAllReviewsById(int benchId)
         {
-            return _context.Reviews.ToList();
-
+            return _context.Reviews
+                .Include(u => u.User)
+                .Where(b => b.BenchId == benchId)
+                .ToList();
         }
 
-        public Review GetById(int id)
+        public List<Review> GetByBenchId(int id)
         {
-            return _context.Reviews.SingleOrDefault(c => c.Id == id);
+            return _context.Reviews.Where(r => r.BenchId == id).OrderBy(r => r.BenchId).ToList();
         }
 
         public void Insert(Review review)

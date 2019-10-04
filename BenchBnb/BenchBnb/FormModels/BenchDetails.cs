@@ -5,14 +5,12 @@ using System.Web;
 
 namespace BenchBnb.FormModels
 {
-    public class CreateBench
+    public class BenchDetails
     {
-        public string Description { get; set; }
+        public string Description { get; }
         public int NumSeats { get; set; }
         public float Latitude { get; set; }
         public float Longitude { get; set; }
-        public float? AverageRating { get; set; }
-        public string userTag { get; set; }
-        public DateTime CreatedOn {get;set;}
+        public float AverageRating { get; set; }
     }
 }

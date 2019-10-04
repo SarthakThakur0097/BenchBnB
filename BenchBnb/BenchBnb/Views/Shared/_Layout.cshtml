@@ -18,10 +18,17 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                 </ul>
+                <div>
+                    @using (Html.BeginForm("Logout", "LogIn"))
+                    {
+                        <button class="btn btn-default" type="submit">Logout</button>
+                    }
+                </div>
             </div>
         </div>
     </div>
