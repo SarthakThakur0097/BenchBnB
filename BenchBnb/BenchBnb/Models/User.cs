@@ -11,18 +11,20 @@ namespace BenchBnb.Models
     {
         public int Id { get; set; }
         [Required]
-        public string UserName { get; set; }
+        public string Email { get; set; }
         [Required]
-        public string Password { get; set; }
+        public string HashedPassword { get; set; }
+        [Required]
+        public string Name { get; set; }
 
         public User()
         {
 
         }
-        public User(string userName, string passWord)
+        public User(string email, string passWord)
         {
-            UserName = userName;
-            Password = passWord;
+            Email = email;
+            HashedPassword = passWord;
         }
     }
 }

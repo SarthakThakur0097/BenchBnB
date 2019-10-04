@@ -161,14 +161,15 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BenchAPIController.cs" />
     <Compile Include="Controllers\BenchController.cs" />
-    <Compile Include="Controllers\HomepageController.cs" />
     <Compile Include="Controllers\LogInController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\ReviewController.cs" />
+    <Compile Include="FormModels\BenchDetails.cs" />
     <Compile Include="FormModels\CreateBench.cs" />
     <Compile Include="FormModels\CreateRegister.cs" />
     <Compile Include="FormModels\CreateReview.cs" />
     <Compile Include="FormModels\LogInFormModel.cs" />
+    <Compile Include="FormModels\RegisterFormModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -193,11 +194,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Review\Index.cshtml" />
     <Content Include="Views\Register\Register.cshtml" />
     <Content Include="Views\LogIn\Login.cshtml" />
-    <Content Include="Views\Homepage\Index.cshtml" />
     <Content Include="Views\Review\Create.cshtml" />
+    <Content Include="Views\Bench\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

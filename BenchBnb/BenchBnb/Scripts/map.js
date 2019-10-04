@@ -31,17 +31,35 @@
     map.addControl(mousePosition);
     console.log(mousePosition);
     //Adding a marker on the map
-    
+    //function ClickHandler()
+    //{
+       
+    // };
+
     map.on('singleclick', async function(event)
     {
+        flag = true;
+        map.forEachFeatureAtPixel(event.pixel, function (feature,layer)
+        {
+            flag = false;
+            console.log("Feature Id"+feature.getId());
+            window.location.href = "/Bench/Details?benchId="+feature.getId();
+
+
+        })
+
         console.log(event.coordinate);
         event.coordinate = ol.proj.transform(event.coordinate, 'EPSG:3857', 'EPSG:4326')
         const latitude = event.coordinate[0];
         const longitude = event.coordinate[1];
         print();
         
-     
-        window.location.href = "/Bench/Create?lat="+latitude+"&lon="+longitude;
+        if(flag ==true)
+        {
+            window.location.href = "/Bench/Create?lat="+latitude+"&lon="+longitude;
+        }
+        
+        
        
     });
 
@@ -60,6 +78,9 @@
               ol.proj.fromLonLat([benchInfo.Latitude,benchInfo.Longitude])
             ),  // Cordinates of New York's Town Hall
         });
+        console.log("BenchId" + benchInfo.Id);
+        marker.setId(benchInfo.Id)
+
         markers.push(marker);
     }
     benchInfo.forEach(putMarkers)

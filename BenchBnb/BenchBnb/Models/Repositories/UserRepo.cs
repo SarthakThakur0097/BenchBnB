@@ -28,11 +28,11 @@ namespace BenchBnb.Models.Repositories
 
         public User GetByPassword(string password)
         {
-            return _context.Users.SingleOrDefault(c => c.Password == password);
+            return _context.Users.SingleOrDefault(c => c.HashedPassword == password);
         }
         public User GetByEmail(string email)
         {
-            return _context.Users.SingleOrDefault(c => c.UserName == email);
+            return _context.Users.SingleOrDefault(c => c.Email == email);
         }
         public void Insert(User user)
         {

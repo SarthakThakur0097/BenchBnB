@@ -1,0 +1,23 @@
+﻿@model BenchBnb.FormModels.CreateBench
+@{
+    ViewBag.Title = "Detail";
+}
+
+
+<h2>Bench Details</h2>
+
+<div>
+    <p>Description: @Model.Description</p>
+    <p>Number Of Seats: @Model.NumSeats</p>
+    <p>Latitude: @Model.Latitude</p>
+    <p>Longitude: @Model.Longitude</p>
+</div>
+
+<div>
+    @using (Html.BeginForm())
+    {
+        <button type="submit">Submit</button>
+    }
+
+</div>
+

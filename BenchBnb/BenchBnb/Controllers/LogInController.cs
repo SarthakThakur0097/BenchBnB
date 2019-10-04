@@ -21,46 +21,41 @@ namespace BenchBnb.Controllers
             context = new Context();
         }
 
-        // GET: LogIn
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         [AllowAnonymous]
         public ActionResult Login()
         {
             var viewModel = new LogInFormModel();
             return View(viewModel);
         }
+
         [HttpPost]
         [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(LogInFormModel formModel)
         {
-            var repo = new UserRepo(context);
-            try
+            if (ModelState.IsValidField("Email") && ModelState.IsValidField("Password"))
             {
+                // TODO Get the user record from the database by their email.
+                var userRepo = new UserRepo(context);
 
+                User user = userRepo.GetByEmail(formModel.Email);
 
-                if (ModelState.IsValidField("Email") && ModelState.IsValidField("Password"))
+                // If we didn't get a user back from the database
+                // or if the provided password doesn't match the password stored in the database
+                // then login failed.
+                if (user == null || user.HashedPassword != formModel.Password)
                 {
-                    User user = repo.GetByEmail(formModel.Email);
-
-                    if (user != null || BCrypt.Net.BCrypt.Verify(formModel.Password, formModel.HashedPassword))
-                    {
-                        return RedirectToAction("Index", "Homepage");
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("", "Invalid UserName Or Password");
-                    }
-                    if (ModelState.IsValid)
-                        FormsAuthentication.SetAuthCookie(formModel.Email, false);
+                    ModelState.AddModelError("", "Login failed.");
                 }
             }
-            catch (DbUpdateException ex)
+
+            if (ModelState.IsValid)
             {
-                //HandleDbUpdateException(ex);
+                // Login the user.
+                FormsAuthentication.SetAuthCookie(formModel.Email, false);
+
+                // Send them to the home page.
+                return RedirectToAction("Index", "Bench");
             }
 
             return View(formModel);

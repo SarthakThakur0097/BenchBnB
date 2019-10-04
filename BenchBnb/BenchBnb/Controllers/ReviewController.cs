@@ -20,12 +20,6 @@ namespace BenchBnb.Controllers
         {
             context = new Context();
         }
-        public ActionResult Index()
-        {
-            var repo = new ReviewsRepo(context);
-
-            return View();
-        }
 
         [HttpGet]
         public ActionResult Create()

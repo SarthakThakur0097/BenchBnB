@@ -13,6 +13,7 @@ using System.Web.Script.Serialization;
 
 namespace BenchBnb.Controllers
 {
+    [Authorize]
     public class BenchController : Controller
     {
         // GET: Homepage
@@ -39,7 +40,6 @@ namespace BenchBnb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CreateBench formModel)
         {
-
             var repo = new BenchRepo(context);
             try
             {
@@ -62,6 +62,25 @@ namespace BenchBnb.Controllers
             var json = new JavaScriptSerializer().Serialize(benches);
 
             return View("Index", benches);
+        }
+
+        public ActionResult Details(int benchId)
+        {
+            var formModel = new CreateBench();
+            var benchRepo = new BenchRepo(context);
+            Bench bench = benchRepo.GetById(benchId);
+            formModel.Description = bench.Description;
+            formModel.NumSeats = bench.NumSeats;
+            formModel.Latitude = bench.Latitude;
+            formModel.Longitude = bench.Longitude;
+
+            return View(formModel);
+        }
+
+        [HttpPost]
+        public ActionResult Details(CreateBench formModel)
+        { 
+            return View(formModel);
         }
 
     }

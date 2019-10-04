@@ -7,11 +7,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using System.Web.Mvc;
+
 
 namespace BenchBnb.Controllers
 {
-    [System.Web.Http.RoutePrefix("api/benches")]
+    [RoutePrefix("api/benches")]
     public class BenchAPIController : ApiController
     {
         BenchRepo bRepo;
@@ -22,7 +22,7 @@ namespace BenchBnb.Controllers
             bRepo = new BenchRepo(context);
         }
         // GET: BenchAPI
-        [System.Web.Http.Route("")]
+        [Route("")]
         async public Task<List<Bench>> Get()
         {
             List<Bench> benches = await bRepo.GetBenches();
