@@ -18,7 +18,7 @@ namespace BenchBnb.Models
         public User User { get; set; }
         public int BenchId { get; set; }
         public Bench Bench { get; set; }
-        
+        public DateTime CreatedOn { get; set; }
         public Review()
         {
 

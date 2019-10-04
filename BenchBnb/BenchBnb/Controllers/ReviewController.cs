@@ -44,6 +44,7 @@ namespace BenchBnb.Controllers
                 Bench bench = benRepo.GetById(Id);
                 User user = userRepo.GetByEmail(email);
                 var review = new Review(formModel.Rating, formModel.Comment, bench, user);
+                review.CreatedOn = DateTime.UtcNow;
                 revRepo.Insert(review);
                 return RedirectToAction("Index", "Bench");
             }

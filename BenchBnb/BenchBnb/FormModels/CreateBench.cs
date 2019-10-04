@@ -12,5 +12,7 @@ namespace BenchBnb.FormModels
         public float Latitude { get; set; }
         public float Longitude { get; set; }
         public float? AverageRating { get; set; }
+        public string userTag { get; set; }
+        public DateTime CreatedOn {get;set;}
     }
 }

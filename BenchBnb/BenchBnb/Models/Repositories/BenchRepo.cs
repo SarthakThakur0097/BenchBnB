@@ -17,6 +17,8 @@ namespace BenchBnb.Models.Repositories
             _context = context;
         }
 
+        //Leaving this commented for the time being to make sure the code doesn't break by removing this
+        [Obsolete]
         public IList<Bench> GetAllBenches()
         {
             return _context.Benches.ToList();

@@ -10,6 +10,7 @@ namespace BenchBnb.Models
     public class Bench
     {
         public int Id { get; set; }
+        [Required]
         public string Description { get; set; }
         [Required]
         public int NumSeats { get; set; }
