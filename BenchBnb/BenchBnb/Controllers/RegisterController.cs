@@ -45,17 +45,24 @@ namespace BenchBnb.Controllers
 
                 // TODO Save the user to the database.
                 var userRepo = new UserRepo(context);
-                userRepo.Insert(user);
-                // Create the authentication ticket (i.e. HTTP cookie).
-                FormsAuthentication.SetAuthCookie(formModel.Email, false);
+                try
+                {
+                    userRepo.Insert(user);
+                    FormsAuthentication.SetAuthCookie(formModel.Email, false);
 
-                // Redirect the user to the "Home" page.
-                return RedirectToAction("Index", "Bench");
+                    // Redirect the user to the "Home" page.
+                    return RedirectToAction("Index", "Bench");
+                }
+                catch(DbUpdateException db)
+                {
+
+                    ModelState.AddModelError("", "Email is already in use.");
+                }
+                
             }
 
             return View(formModel);
         }
-
 
     }
 }

@@ -11,6 +11,7 @@ namespace BenchBnb.Models
     {
         public int Id { get; set; }
         [Required]
+        [Index("Email", 2, IsUnique = true), MaxLength(255)]
         public string Email { get; set; }
         [Required]
         public string HashedPassword { get; set; }

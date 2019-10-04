@@ -45,7 +45,6 @@
             console.log("Feature Id"+feature.getId());
             window.location.href = "/Bench/Details?benchId="+feature.getId();
 
-
         })
 
         console.log(event.coordinate);
