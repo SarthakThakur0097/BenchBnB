@@ -29,6 +29,16 @@
                         <button class="btn btn-default" type="submit">Logout</button>
                     }
                 </div>
+
+                <div>
+                    @if (!Request.IsAuthenticated)
+                    {
+                        using (Html.BeginForm("LogIn", "Login"))
+                        {
+                            <button class="btn btn-default" type="submit">Log In</button>
+                        }
+                    }
+                </div>
             </div>
         </div>
     </div>
