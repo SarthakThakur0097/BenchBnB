@@ -12,11 +12,8 @@ namespace BenchBnb.Models
         public int Id { get; set; }
         [Required]
         public string Description { get; set; }
-        [Required]
         public int NumSeats { get; set; }
-        [Required]
         public float Latitude { get; set; }
-        [Required]
         public float Longitude { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
