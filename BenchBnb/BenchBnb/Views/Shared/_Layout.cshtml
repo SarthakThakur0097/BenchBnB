@@ -17,28 +17,27 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("BenchBnB", "Index", "Bench", new { area = "" }, new { @class = "navbar-brand" })
                 
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                 </ul>
-                <div>
-                    @using (Html.BeginForm("Logout", "LogIn"))
-                    {
-                        <button class="btn btn-default" type="submit">Logout</button>
-                    }
-                </div>
+               
 
-                <div>
-                    @if (!Request.IsAuthenticated)
-                    {
-                        using (Html.BeginForm("LogIn", "Login"))
-                        {
-                            <button class="btn btn-default" type="submit">Log In</button>
-                        }
-                    }
-                </div>
+                @if (Request.IsAuthenticated)
+                {
+                    <div class="navbar-text navbar-right">
+
+                    <span>Welcome!</span>
+                    @using (Html.BeginForm("Logout", "LogIn", FormMethod.Post, new { style = "display: inline" }))
+        {
+            <button class="btn btn-warning" type="submit">Logout</button>
+        }
+
+    </div>
+}
+            
             </div>
         </div>
     </div>
