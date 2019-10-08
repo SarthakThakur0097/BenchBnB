@@ -48,6 +48,7 @@ namespace BenchBnb.Controllers
             {
                 User user = userRepo.GetByEmail(User.Identity.Name);
                 var bench = new Bench(formModel.Description, formModel.NumSeats, formModel.Latitude, formModel.Longitude, user);
+                bench.CreatedOn = DateTime.UtcNow;
                 repo.Insert(bench);
                 return RedirectToAction("Index");
             }
@@ -85,26 +86,12 @@ namespace BenchBnb.Controllers
             StringBuilder uTag = new StringBuilder(names[0]);
             uTag.Append(" " + lastName[0]);
             formModel.userTag = uTag.ToString();
-            
-            //string name = user.Name;
-            //StringBuilder firstName = new StringBuilder();
-            //StringBuilder lastInit = new StringBuilder();
-            //bool enterLast = false;
-            //for(int i = 0; i<name.Length; i++)
-            //{
-            //    if (name[i]==' ')
-            //    {
-            //        firstName.Append(' ');
-            //    }
-            //    else if(name[i]!=' ')
-            //    {
-            //        firstName.Append(name[i]);
-            //    }
-            //} 
+           
             formModel.Description = bench.Description;
             formModel.NumSeats = bench.NumSeats;
             formModel.Latitude = bench.Latitude;
             formModel.Longitude = bench.Longitude;
+            formModel.CreatedOn = bench.CreatedOn;
             IList<Review> allReviews = reviewRepo.GetAllReviewsById(benchId);
 
             if (allReviews.Count == 0)
@@ -121,24 +108,26 @@ namespace BenchBnb.Controllers
                 sum /= allReviews.Count;
                 formModel.AverageRating = sum;
             }
-            string desc = formModel.Description;
-            StringBuilder sb = new StringBuilder();
+
+            //previous short description code
+            //string desc = formModel.Description;
+            //StringBuilder sb = new StringBuilder();
             
-            int wordCount = 0;
-            for(int i = 0; i<desc.Length; i++)
-            {
-                sb.Append(desc[i]);
-                if(desc[i]== ' ')
-                {
-                    wordCount++;
-                }
-                if(wordCount==10)
-                {
-                    sb.Append("...");
-                    break;
-                }
-            }
-            formModel.Description = sb.ToString();
+            //int wordCount = 0;
+            //for(int i = 0; i<desc.Length; i++)
+            //{
+            //    sb.Append(desc[i]);
+            //    if(desc[i]== ' ')
+            //    {
+            //        wordCount++;
+            //    }
+            //    if(wordCount==10)
+            //    {
+            //        sb.Append("...");
+            //        break;
+            //    }
+            //}
+            //formModel.Description = sb.ToString();
             
             return View(formModel);
         }

@@ -31,13 +31,25 @@
 
                     <span>Welcome!</span>
                     @using (Html.BeginForm("Logout", "LogIn", FormMethod.Post, new { style = "display: inline" }))
-        {
-            <button class="btn btn-warning" type="submit">Logout</button>
-        }
+                    {
+                        <button class="btn btn-warning" type="submit">Logout</button>
+                    }
 
-    </div>
-}
-            
+                        </div>
+                }
+                else if (!Request.IsAuthenticated)
+                {
+                    <div class="navbar-text navbar-right">
+
+                        <span></span>
+                        @using (Html.BeginForm("Login", "LogIn", FormMethod.Post, new { style = "display: inline" }))
+                        {
+                            <button class="btn btn-warning" type="submit">Login</button>
+                        }
+
+                    </div>
+                }
+
             </div>
         </div>
     </div>

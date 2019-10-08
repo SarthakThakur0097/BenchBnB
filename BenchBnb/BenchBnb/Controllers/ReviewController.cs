@@ -52,7 +52,6 @@ namespace BenchBnb.Controllers
             {
                 //HandleDbUpdateException(ex);
             }
-
             return View("Create", formModel);
         }
     }

@@ -23,10 +23,22 @@ namespace BenchBnb.Controllers
         }
         // GET: BenchAPI
         [Route("")]
-        async public Task<List<Bench>> Get()
+        async public Task<IHttpActionResult> Get()
         {
             List<Bench> benches = await bRepo.GetBenches();
-            return benches;
+            var flattendBenches = benches.Select(b => new
+            {
+                BenchId = b.Id,
+                Description = b.ShortDescription,
+                NumSeats = b.NumSeats,
+                Latitude = b.Latitude,
+                Longitude = b.Longitude,
+                HasReviews = b.Reviews.Count > 0,
+                AverageRating = b.AverageRating,
+                UserDisplayName = b.User.Name
+            }).ToList();
+
+            return Ok(flattendBenches);
         }
     }
 }

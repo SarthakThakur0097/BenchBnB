@@ -46,6 +46,8 @@ namespace BenchBnb.Models.Repositories
             using (var context = new Context())
             {
                 List<Bench> benches = await context.Benches
+                  .Include(b => b.Reviews)
+                  .Include(b => b.User)
                   .OrderBy(b => b.NumSeats)
                   .ToListAsync();
 

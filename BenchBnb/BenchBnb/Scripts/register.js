@@ -4,7 +4,7 @@
     var cansubmit = (email.length > 0);
     var subButton = document.getElementById("submitBtt");
 
-    if (email.value === '' || password.value === '') {
+    if (email.value === '' && password.value === '') {
         subButton.disabled = true;
         console.log("Inside disable")
     }

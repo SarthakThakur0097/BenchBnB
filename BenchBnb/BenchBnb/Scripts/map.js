@@ -9,7 +9,6 @@
     const response = await getBenches();
     const benchInfo = await response.json();
     const markers = [];
-
    
     var baseMapLayer = new ol.layer.Tile({
         source: new ol.source.OSM()
@@ -30,11 +29,6 @@
     });
     map.addControl(mousePosition);
     console.log(mousePosition);
-    //Adding a marker on the map
-    //function ClickHandler()
-    //{
-       
-    // };
 
     map.on('singleclick', async function(event)
     {
@@ -58,13 +52,10 @@
             window.location.href = "/Bench/Create?lat="+latitude+"&lon="+longitude;
         }
         
-        
        
     });
 
 
-    
-    
     async function print()
     {
         console.log(latitude);
@@ -77,8 +68,8 @@
               ol.proj.fromLonLat([benchInfo.Latitude,benchInfo.Longitude])
             ),  // Cordinates of New York's Town Hall
         });
-        console.log("BenchId" + benchInfo.Id);
-        marker.setId(benchInfo.Id)
+        console.log("BenchId" + benchInfo.BenchId);
+        marker.setId(benchInfo.BenchId)
 
         markers.push(marker);
     }
@@ -88,8 +79,6 @@
     var vectorSource = new ol.source.Vector({
         features: markers
     });
-   
-   
 
     var markerVectorLayer = new ol.layer.Vector({
         source: vectorSource,
