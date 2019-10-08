@@ -43,7 +43,7 @@ namespace BenchBnb.Controllers
                 // If we didn't get a user back from the database
                 // or if the provided password doesn't match the password stored in the database
                 // then login failed.
-                if (user == null || user.HashedPassword != formModel.Password)
+                if (user == null || !BCrypt.Net.BCrypt.Verify(formModel.Password, user.HashedPassword))
                 {
                     ModelState.AddModelError("", "Login failed.");
                 }

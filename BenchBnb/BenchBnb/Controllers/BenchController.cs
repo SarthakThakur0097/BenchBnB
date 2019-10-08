@@ -108,7 +108,6 @@ namespace BenchBnb.Controllers
                 sum /= allReviews.Count;
                 formModel.AverageRating = sum;
             }
-
             //previous short description code
             //string desc = formModel.Description;
             //StringBuilder sb = new StringBuilder();

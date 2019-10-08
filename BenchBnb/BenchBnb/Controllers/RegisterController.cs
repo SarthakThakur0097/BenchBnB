@@ -42,7 +42,8 @@ namespace BenchBnb.Controllers
                     HashedPassword = formModel.Password,
                     Name = formModel.Name
                 };
-
+                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(formModel.Password, 12);
+                user.HashedPassword = hashedPassword;
                 // TODO Save the user to the database.
                 var userRepo = new UserRepo(context);
                 try

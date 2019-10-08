@@ -10,32 +10,34 @@
     @Html.AntiForgeryToken()
 
     <fieldset>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="pure-control-group">
-            @Html.LabelFor(model => model.NumSeats)
-            @Html.EditorFor(model => model.NumSeats)
-            @Html.ValidationMessageFor(model => model.NumSeats, "", new { @class = "pure-form-message-inline" })
+            @Html.LabelFor(model => model.NumSeats, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.NumSeats, new { @class = "form-control", id = "numSeatsText" })
+            @Html.ValidationMessageFor(model => model.NumSeats, "", new { @class = "text-danger" })
         </div>
 
         <div class="pure-control-group">
-            @Html.LabelFor(model => model.Description)
-            @Html.EditorFor(model => model.Description)
-            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "pure-form-message-inline" })
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.Description, new { @class = "form-control", id = "descriptionText" } )
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
         </div>
 
         <div class="pure-control-group">
-            @Html.LabelFor(model => model.Latitude)
-            @Html.EditorFor(model => model.Latitude)
-            @Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "pure-form-message-inline" })
+            @Html.LabelFor(model => model.Latitude, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.Latitude, new { @class = "form-control", id = "latText" })
+            @Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "text-danger" })
         </div>
 
         <div class="pure-control-group">
-            @Html.LabelFor(model => model.Longitude)
-            @Html.EditorFor(model => model.Longitude)
-            @Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "pure-form-message-inline" })
+            @Html.LabelFor(model => model.Longitude, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.Longitude, new { @class = "form-control", id = "longText" })
+            @Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "text-danger" })
         </div>
-        <div class="pure-controls">
-            @Html.ActionLink("Cancel", "Index", new { }, new { @class = "pure-button" })
-            <button type="submit" class="pure-button pure-button-primary">Submit</button>
-        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+       </div>
     </fieldset>
 }
